@@ -1,4 +1,0 @@
-April 2022
-* Functional Blog: Customizing customer Layouts for specific documents. How to create new types of reports per customer
-** Think Tote Packing List on HR and how we could have had setup a Report Id + Custom Report Layout, as opposed to having just Report Id, and need a new Report every time a customer requires a new layout
-* Print Node vs. Universal Printing
