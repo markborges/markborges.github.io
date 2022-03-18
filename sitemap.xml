@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/</loc>
+    <loc>http://bcrepositories.com/2022/03/13/Welcome-to-Business-Central-Repositories/</loc>
     
-    <lastmod>2022-03-17</lastmod>
+    <lastmod>2022-03-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,16 +13,16 @@
   <url>
     <loc>http://bcrepositories.com/2022/03/13/March-2022/</loc>
     
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/2022/03/13/Welcome-to-Business-Central-Repositories/</loc>
+    <loc>http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/</loc>
     
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -58,7 +58,7 @@
 
   <url>
     <loc>http://bcrepositories.com/</loc>
-    <lastmod>2022-03-17</lastmod>
+    <lastmod>2022-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -66,7 +66,7 @@
   
   <url>
     <loc>http://bcrepositories.com/tags/Stable/</loc>
-    <lastmod>2022-03-17</lastmod>
+    <lastmod>2022-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -74,29 +74,29 @@
 
   
   <url>
-    <loc>http://bcrepositories.com/categories/Functional/</loc>
-    <lastmod>2022-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://bcrepositories.com/categories/Repositories/</loc>
-    <lastmod>2022-03-17</lastmod>
+    <lastmod>2022-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/categories/Coming-Soon/</loc>
-    <lastmod>2022-03-17</lastmod>
+    <loc>http://bcrepositories.com/categories/Functional/</loc>
+    <lastmod>2022-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://bcrepositories.com/categories/Technical/</loc>
-    <lastmod>2022-03-17</lastmod>
+    <lastmod>2022-03-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/categories/Coming-Soon/</loc>
+    <lastmod>2022-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
