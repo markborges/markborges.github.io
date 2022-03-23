@@ -1,0 +1,29 @@
+/themes/next/layout/_macro/sidebar.njk
+    <div class="sidebar-inner {% if display_toc %}sidebar-nav-active sidebar-toc-active{% else %}sidebar-overview-active{% endif %}">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          {{ __('sidebar.toc') }}
+        </li>
+        <li class="sidebar-nav-overview">    //Removed
+          {{ __('sidebar.overview') }}       //Removed
+        </li>                                //Removed
+      </ul>
+
+/themes/next/source/css/_common/components/post/post-header.styl
+
+.posts-expand .post-header {
+  font-size: $font-size-large;
+  margin-bottom: 30px; <-- Changed from 60px
+  text-align: center;
+}
+
+
+
+/themes/next/source/css/_schemes/Muse/_header.styl
+.header-inner {
+  padding-top: 20px;   <-- Changed from 60px
+
+  +mobile() {
+    padding-top: 10px;  <-- Changed from 30pm
+  }
+}
