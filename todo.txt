@@ -1,0 +1,7 @@
+* Add a functional Blog entry on how to verify an Extension information such as Privacy Note, Terms and Conditions and Help link. Mention that BC Repositorie Extensions will always have this type of information
+* Change some Contact Me links for Git Hub Issues as well
+* Add reading time to Pages (Posts already have them) About Me
+* Implement a way of reading the /latest post in any category (update the Welcome page when this works)
+
+Done
+* Implement a common footer on all pages to submit issues with pages on GitHub (like Microsoft Docs does for its own documents)
