@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"bcrepositories.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="The ChallengeWhenever I train new users in Business Central, the Customer Service team always comes up with the very same question: “If a customer calls to inquire about their order status, how can I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advanced Find Entries">
+<meta property="og:url" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/index.html">
+<meta property="og:site_name" content="Business Central Repositories">
+<meta property="og:description" content="The ChallengeWhenever I train new users in Business Central, the Customer Service team always comes up with the very same question: “If a customer calls to inquire about their order status, how can I">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/HowItWorks-01.png">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/HowItWorks-02.png">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/HowItWorks-03.png">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/Setup-01.png">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/HowItWorks-04.png">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/SalesOrderProcessor.png">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/BusinessManager.png">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/BusinessManager-StopFirstMatch.png">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/InventoryManager.png">
+<meta property="og:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/InventoryManager-SearchWheel.png">
+<meta property="article:published_time" content="2022-03-16T04:15:00.000Z">
+<meta property="article:modified_time" content="2022-03-18T06:09:04.768Z">
+<meta property="article:author" content="Marcelo Borges">
+<meta property="article:tag" content="Stable">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/HowItWorks-01.png">
+
+
+<link rel="canonical" href="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/","path":"2022/03/16/Advanced-Find-Entries/","title":"Advanced Find Entries"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Advanced Find Entries | Business Central Repositories</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9K4WMR4NG"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-M9K4WMR4NG","only_pageview":false,"gtm_id":"GTM-WSTJCZG"}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Business Central Repositories</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">A repository of curated Business Central Apps and Extensions</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-functional-blogs"><a href="/categories/Functional/" rel="section"><i class="fa fa-book-open fa-fw"></i>Functional Blogs</a></li>
+        <li class="menu-item menu-item-technical-blogs"><a href="/categories/Technical/" rel="section"><i class="fa fa-book-open fa-fw"></i>Technical Blogs</a></li>
+        <li class="menu-item menu-item-repositories"><a href="/categories/Repositories/" rel="section"><i class="fa fa-boxes-stacked fa-fw"></i>Repositories</a></li>
+        <li class="menu-item menu-item-coming-soon"><a href="/categories/Coming-Soon/" rel="section"><i class="fa fa-bullhorn fa-fw"></i>Coming Soon</a></li>
+        <li class="menu-item menu-item-about"><a href="/About/" rel="section"><i class="fa fa-id-card fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-disclaimer"><a href="/Disclaimer/" rel="section"><i class="fa fa-triangle-exclamation fa-fw"></i>Disclaimer</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Challenge"><span class="nav-number">1.</span> <span class="nav-text">The Challenge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-It-Works"><span class="nav-number">2.</span> <span class="nav-text">How It Works</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Setup"><span class="nav-number">3.</span> <span class="nav-text">Setup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Use-Case-1-Sales-Order-Processor"><span class="nav-number">4.</span> <span class="nav-text">Use Case 1 - Sales Order Processor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Use-Case-2-Business-Manager"><span class="nav-number">5.</span> <span class="nav-text">Use Case 2 - Business Manager</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Use-Case-3-Inventory-Manager"><span class="nav-number">6.</span> <span class="nav-text">Use Case 3 - Inventory Manager</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Marcelo Borges</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/markborges" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;markborges" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markborges@gmail.com" title="E-Mail → mailto:markborges@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Marcelo Borges">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Business Central Repositories">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Advanced Find Entries | Business Central Repositories">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Advanced Find Entries
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: Mar, 16 2022 00:15" itemprop="dateCreated datePublished" datetime="2022-03-16T00:15:00-04:00">Mar, 16 2022</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: Mar, 18 2022 02:09" itemprop="dateModified" datetime="2022-03-18T02:09:04-04:00">Mar, 18 2022</time>
+    </span>
+  
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-marker"></i>
+    </span>
+    <span class="post-meta-item-text">Marcelo Borges</span>
+  </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Repositories/" itemprop="url" rel="index"><span itemprop="name">Repositories</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="post-meta-container" style="text-align:center"><span class="post-meta-item"><strong>Source</strong>: <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=173910b8-fdae-ea11-8b71-0003ff68f609">BC Ideas Website</a> | <strong>Download</strong>: <a href="Business_Central_Repositories_BCR_Advanced_Find_Entries_19.0.1.2.app" onClick="ga.getAll()[0].send('event', 'APPs', 'Download', this.href);">v 19.0.1.2</a> 🟢 Stable | <strong>Object Range</strong>: 61400-61410</span></div><h1 id="The-Challenge"><a href="#The-Challenge" class="headerlink" title="The Challenge"></a>The Challenge</h1><p>Whenever I train new users in Business Central, the Customer Service team always comes up with the very same question:</p>
+<p><em>“If a customer calls to inquire about their order status, how can I look that information up?”</em> 🕵️‍♀️</p>
+ <span id="more"></span>
+<p>And you know, in Business Central, we <strong>do</strong> need to look that up in at least 2 different places: <em>Sales Orders</em> and <em>Posted Sales Invoices</em>. No matter the different ways you can look this information up, fact is, that if you can’t find the Sales Order in the Sales Order list, you must look it up on the Posted Sales Invoices to ensure that it’s there.</p>
+<p>… anyway, very often, right after my short explanation, I get the same reaction:</p>
+<p><em>“Do I have to look in 2 different places??”</em> 🦥</p>
+<p>Well, after having been asked this same question so many times, and knowing that Business Central has a pretty powerful programming language, I decided to submit an <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=173910b8-fdae-ea11-8b71-0003ff68f609">idea</a> to Microsoft, that would be some sort of <strong>Advanced Navigate</strong> (back when <strong>Find Entries</strong> was called <strong>Navigate</strong>). Unfortunately, my idea didn’t get enough push to be noted by Microsoft.</p>
+<p>Therefore, I decided to pursue this challenge myself. I went ahead and developed the <strong>Advanced Find Entries</strong></p>
+<h1 id="How-It-Works"><a href="#How-It-Works" class="headerlink" title="How It Works"></a>How It Works</h1><p>To start, make sure you’re currently setup under the <strong>Order Processor</strong> role, and search for <strong>Advanced Find Entries</strong> on the Search Bar. Don’t forget to add a bookmark!</p>
+<p><img src="/2022/03/16/Advanced-Find-Entries/HowItWorks-01.png" alt="Advanced Find Entries main page"><span class="image-caption">Advanced Find Entries main page</span></p>
+<p>To start searching, just type anything (e.g. a Sales Order No.) on the <strong>Search Criteria</strong> field, and click <strong>Find</strong> on the Actions ribbon.</p>
+<p><img src="/2022/03/16/Advanced-Find-Entries/HowItWorks-02.png" alt="After Search Results"><span class="image-caption">After Search Results</span></p>
+<p>Just like standard <strong>Find Entries</strong>, BC will show a list of Tables that contains the <strong>Search Criteria</strong>, including in which <em>Fields</em> the content was found. You can also drill down into the No. of Records, just like standard <strong>Find Entries</strong>.</p>
+<p>The <strong>Strict Search</strong> flag is just a convenience feature: If set, <strong>Advanced Find Entries</strong> will only look for the exact <strong>Search Criteria</strong>. If not, it will search for the <strong>Search Criteria</strong> in any part of the field (this is the equivalent of applying a filter with ‘*’ in the beginning and end of a filter).<br><img src="/2022/03/16/Advanced-Find-Entries/HowItWorks-03.png" alt="Strict Search"><span class="image-caption">Strict Search</span></p>
+<p>Let’s see a few more details on what you can accomplish with <strong>Advanced Find Entries</strong> on the following sections…</p>
+<h1 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h1><p>To setup the <strong>Advanced Find Entries</strong>, search for <strong>Advanced Find Entries Setup</strong> on the Search Bar.</p>
+<p><img src="/2022/03/16/Advanced-Find-Entries/Setup-01.png" alt="Advanced Find Entries Setup"><span class="image-caption">Advanced Find Entries Setup</span></p>
+<p>On the General area, marked in green, you can select which Profile you want to setup. On my first demo above, I ran a search over the <strong>Order Processor</strong> profile. I also provide demo data for the <strong>Business Manager</strong> and <strong>Inventory Manager</strong> Roles.</p>
+<p>On the lines area, marked in blue, you will select which tables and fields you want the <strong>Advanced Find Entries</strong> to search on. On the setup above, for the <strong>Order Processor</strong> profile, I setup tables <strong>Sales Header</strong> (which includes <em>Quotes</em>, <em>Orders</em>, <em>Invoices</em>, <em>Credit Memos</em> and <em>Return Orders</em>), <strong>Posted Shipments</strong>, <strong>Posted Invoices</strong> and <strong>Posted Credit Memos</strong>.</p>
+<p>Here’s a brief description on how you can setup each field on the lines:</p>
+<ul>
+<li><p><strong>Table No.</strong>: The Table No. for the Table you want to setup. Use the <strong>Page Inspection</strong> to help with that information, if you don’t know Table Nos. by heart.</p>
+</li>
+<li><p><strong>Fields</strong>: For each table, you must setup which fields the search engine will search over. If no fields are specified, the Table will be completely ignored. To setup fields, you can either drill down from the line, or click on <strong>Fields</strong> from the Actions ribbon.</p>
+</li>
+<li><p><strong>Stop on First Match</strong>: Flag this if you want <strong>Advanced Find Entries</strong> to stop the search over a table once it finds the <strong>Search Criteria</strong> in any of the fields setup for that table. <strong>❗Note</strong>: If your searches are taking too long to execute, you may want to set this flag for the tables with most records.</p>
+</li>
+</ul>
+<p>– For an example on this field, refer to <a href="#Use-Case-2-Business-Manager">Use Case 2 - Business Manager</a>. </p>
+<ul>
+<li><p><strong>Lookup Page Id Single</strong>: Determine which Page Id that should open when you drill down into the <strong>No. of Records</strong>, when only 1 record is found. This is a nice feature to take the user straight into a Card, as opposed to taking the user to a List.</p>
+</li>
+<li><p><strong>Lookup Page Id Multiple</strong>: The opposite from <strong>Lookup Page Id Single</strong>, you should specify here the Page Id that supports a List for this table.</p>
+</li>
+</ul>
+<p>Once everything is setup, you can test it by running the <strong>Advanced Find Entries</strong> action from the Actions ribbon. This will open the <strong>Advanced Find Entries</strong> page for the role that you are currently setting up. This is specially helpful when you’re setting up a Role that is different that the one you’re currently assigned to.</p>
+<p><img src="/2022/03/16/Advanced-Find-Entries/HowItWorks-04.png" alt="Advanced Find Entries for the current profile you&#39;re setting up"><span class="image-caption">Advanced Find Entries for the current profile you&#39;re setting up</span></p>
+<p>Keep reading to see a few applications of the <strong>Advanced Find Entries</strong></p>
+<h1 id="Use-Case-1-Sales-Order-Processor"><a href="#Use-Case-1-Sales-Order-Processor" class="headerlink" title="Use Case 1 - Sales Order Processor"></a>Use Case 1 - Sales Order Processor</h1><p><img src="/2022/03/16/Advanced-Find-Entries/SalesOrderProcessor.png" alt="Sales Order Processor Setup"><span class="image-caption">Sales Order Processor Setup</span><br>On the Sales <strong>Order Processor</strong> role, we are more focused on <em>Documents Numbers</em>. Therefore, when customers call to inquire about their order, or maybe about a shipment or an invoice they received, it’s valuable for Customer Sales Reps to be able to search by the reference number that the customer has on hand.</p>
+<p>With this in mind, I setup the Order Processor role to search mainly on fields that can contain Document Nos.:</p>
+<ul>
+<li><strong>Sales Header</strong><ul>
+<li>No.</li>
+<li>Your Reference</li>
+<li>External Document No.</li>
+</ul>
+</li>
+<li><strong>Posted Sales Shipments</strong><ul>
+<li>No.</li>
+<li>Customer PO No.</li>
+<li>Order No.</li>
+<li>External Document No.</li>
+</ul>
+</li>
+<li><strong>Posted Sales Invoices</strong><ul>
+<li>No.</li>
+<li>Customer PO No.</li>
+<li>Order No.</li>
+<li>External Document No.</li>
+<li>Pre-Assigned No.</li>
+</ul>
+</li>
+<li><strong>Posted Sales Cr. Memos</strong><ul>
+<li>No.</li>
+<li>Customer PO No.</li>
+<li>External Document No.</li>
+<li>Pre-Assigned No.</li>
+<li>Return Order No.</li>
+</ul>
+</li>
+</ul>
+<h1 id="Use-Case-2-Business-Manager"><a href="#Use-Case-2-Business-Manager" class="headerlink" title="Use Case 2 - Business Manager"></a>Use Case 2 - Business Manager</h1><p><img src="/2022/03/16/Advanced-Find-Entries/BusinessManager.png" alt="Business Manager Setup"><span class="image-caption">Business Manager Setup</span><br>A <strong>Business Manager</strong> might be more interested in researching documents related to <em>Customer Names</em>, rather than <em>Document Numbers</em>. Therefore, I setup this profile to focus on the <strong>Sales Orders</strong>, <strong>Posted Invoices</strong> and <strong>Posted Credit Memos</strong>, and to search over fields that usually contain Names (Customer Names and Contact Names).</p>
+<p>For this, I added the following 9 fields to tables <strong>Sales Header</strong>, <strong>Posted Sales Invoice</strong> and <strong>Posted Credit Memo</strong>:</p>
+<ul>
+<li>Name</li>
+<li>Name 2</li>
+<li>Contact</li>
+<li>Ship-to Name</li>
+<li>Ship-to Name 2</li>
+<li>Ship-to Contact</li>
+<li>Bill-to Name</li>
+<li>Bill-to Name 2</li>
+<li>Bill-to Contact</li>
+</ul>
+<p>Note that for table <strong>Sales Header</strong>, I have flag <strong>Stop on First Match</strong> turned on. For this table, BC will start searching for the <strong>Search Criteria</strong> on the first field (sorted by Field No.), and once it finds any records matching the criteria, it will no longer search for that on the other fields, and, the Search Results will simply display the Table Name as a hit.</p>
+<p>When this flag is turned off (which is the default), even if BC finds records in a table, for one specific field, it will still keep on searching in the same table for the subsequent fields. Also, on the Search Results, it will display the specific Table Name and Field Name where records were found.</p>
+<p>See the example below, when I search for <strong>Cannon</strong> on a BC Demo Database:</p>
+<p><img src="/2022/03/16/Advanced-Find-Entries/BusinessManager-StopFirstMatch.png" alt="Stop on First Match"><span class="image-caption">Stop on First Match</span></p>
+<p>In green, you can see that BC found 4 records containing the criteria <strong>Cannon</strong> in the Sales Header table, however, it is not clear in which field it was found. For this Use Case, knowing the field is not important.</p>
+<p>In blue, you can see that BC found multiple records, but because <strong>Stop on First Match</strong> was turned off, BC kept on searching multiple times over the same table, looking for different fields, and indeed, it found <strong>Cannon</strong> over 3 different fields on Sales Invoice Header table, and over 2 different fields on the Sales Credit Memo table.</p>
+<p>⭐ <strong>Tip</strong> ⭐: Turn <strong>Stop on First Match</strong> on to increase performance when searching on tables with a large number of records.</p>
+<h1 id="Use-Case-3-Inventory-Manager"><a href="#Use-Case-3-Inventory-Manager" class="headerlink" title="Use Case 3 - Inventory Manager"></a>Use Case 3 - Inventory Manager</h1><p><img src="/2022/03/16/Advanced-Find-Entries/InventoryManager.png" alt="Inventory Manager Setup"><span class="image-caption">Inventory Manager Setup</span></p>
+<p>The Inventory Manager has more of an Item-centric search need. They are interested in finding out where an Item No. is currently used. Therefore, I added quite a few tables that can reference an Item No., and more than that, I also included Description fields on the search, so that the Inventory Manager can lookup items either by its Number, or by its Description.</p>
+<p>As an example, check out the results that show up when I search for the good old “Wheel”:<br><img src="/2022/03/16/Advanced-Find-Entries/InventoryManager-SearchWheel.png" alt="Search Criteria: Wheel"><span class="image-caption">Search Criteria: Wheel</span></p>
+<p>As an improvement to this profile, you could add fields from the Sales Lines, Purchase Lines, maybe Transfer Lines, and etc.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>That’s it for today. I hope you enjoy the first extension I’m making available on this website.🍻</p>
+<hr><div style="text-align:center;border:1px black solid;background-color:#e6fdff;font-size:0.9em"><span class="post-meta-item"><p style="margin:0px;padding:5px 0px">Comments? Share them on <a target="_blank" rel="noopener" href="https://github.com/markborges/markborges.github.io/discussions/2"><i class="fab fa-github fa-fw"></i> GitHub</a></p><p style="margin:0px;padding:5px 0px">Issues? Report them on <a target="_blank" rel="noopener" href="https://github.com/markborges/markborges.github.io/issues/new?title=%5BPage%20Issue%5D%20_posts%2F2022-03-14-Advanced-Find-Entries.md&body=%5BEnter%20Feedback%20Here%20%3C%3D%3D%20Remove%20This%20line%5D"><i class="fab fa-github fa-fw"></i> GitHub</a></p></span></div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Stable/" rel="tag"># Stable</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/13/Welcome-to-Business-Central-Repositories/" rel="prev" title="Welcome to Business Central Repositories">
+                  <i class="fa fa-chevron-left"></i> Welcome to Business Central Repositories
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marcelo Borges</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">8 mins.</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
