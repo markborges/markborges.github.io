@@ -74,14 +74,14 @@
 
   
   <url>
-    <loc>http://bcrepositories.com/categories/Functional/</loc>
+    <loc>http://bcrepositories.com/categories/Repositories/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/categories/Repositories/</loc>
+    <loc>http://bcrepositories.com/categories/Functional/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
