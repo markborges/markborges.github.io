@@ -2,7 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://bcrepositories.com/2022/03/17/BC-20-Upgrades-BC-2022-Wave-1/</loc>
+    <loc>http://bcrepositories.com/2022/03/13/March-2022/</loc>
+    
+    <lastmod>2022-03-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/2022/03/24/BC-20-Upgrades-Part-2/</loc>
+    
+    <lastmod>2022-03-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/</loc>
+    
+    <lastmod>2022-03-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/2022/03/24/BC-20-Upgrades-BC-2022-Wave-1/</loc>
     
     <lastmod>2022-03-24</lastmod>
     
@@ -30,24 +57,6 @@
   
   <url>
     <loc>http://bcrepositories.com/2022/03/13/Welcome-to-Business-Central-Repositories/</loc>
-    
-    <lastmod>2022-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/2022/03/13/March-2022/</loc>
-    
-    <lastmod>2022-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/2022/03/16/Advanced-Find-Entries/</loc>
     
     <lastmod>2022-03-18</lastmod>
     
