@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Disable printing for Purchase Order under Pending Approval Status › BC Repositories and BC Ideas Extensions</title>
+  <meta name="author" content="Marcelo Borges">
+  
+  <meta name="description" content="About This IdeaThis original idea posted by user YOKE MAY TANG on 7&amp;#x2F;31&amp;#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Disable printing for Purchase Order under Pending Approval Status"/>
+  <meta property="og:site_name" content="BC Repositories and BC Ideas Extensions"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="BC Repositories and BC Ideas Extensions" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><div id="logo"></div>
+    <a href="/">BC Repositories and BC Ideas Extensions</a></h1>
+  <h2><a href="/">Your BC Ideas inside a custom extension.</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/2024/08/02/Welcome-to-BC-Repositories-for-BC-Ideas/">Welcome</a></li>
+      
+      <li><a href="/Disclaimer">Disclaimer</a></li>
+      
+      <li><a href="/Download">Download</a></li>
+      
+      <li><a href="/About">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">Atom Feed</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Disable printing for Purchase Order under Pending Approval Status</h1>
+  
+
+      
+        <time datetime="2024-08-02T20:37:41.000Z">Aug, 02 2024, by <a href="/About">Marcelo Borges</a>
+          
+             | <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">Follow the original BC Idea here</a>
+          
+        </time>
+      
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="About-This-Idea"><a href="#About-This-Idea" class="headerlink" title="About This Idea"></a>About This Idea</h3><p>This original <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">idea</a> posted by user <em>YOKE MAY TANG</em> on 7&#x2F;31&#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.</p>
+<span id="more"></span>
+
+<p>In the original post, the user requests:</p>
+<blockquote><p>Would like to prevent PO to be printed&#x2F;emailed to vendor while the PO is under Pending Approval.</p>
+<footer><strong>@BCIdeas</strong><cite><a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">Disable printing for Purchase Order under Pending Approval Status</a></cite></footer></blockquote>
+
+<p>It’s a simple statement, and it seems to be pretty straight forward, right? But it does have a few caveats to be considered.</p>
+<p>When users told me in the past they would not like BC to behave in a certain way until an approval process has cleared, it was mostly because they didn’t want users taking a shortcut in the process.</p>
+<p>In this request, if we take it literally, it would be very easy to create a block (maybe an Error message?) to prevent the user from printing the Purchase Order document if Status equals “Pending Approval”. But if you really analyze this further, only blocking this for “Pending Approval” status wouldn’t make much sense…</p>
+<p>What if the user simply printed the Purchase Document BEFORE requesting an approval? Then this block would be pretty useless, right? ⌛</p>
+<br>
+<h3 id="Implementation-Details"><a href="#Implementation-Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h3><p>Having this in mind, what makes more sense, is to actually prevent the printout if the status is <em>not released</em>. This means that even POs with status “Pending Prepayment” will be blocked from printing the Purchase Order document.</p>
+<p>Having established that premise, we now need to then determine, in the code, where will we put this block?</p>
+<p>In some of the comments, one user mentioned that it would be pretty easy to implement this block directly on the report, but I see one problem with that approach: a large majority of the customers customize the Purchase Order report. Most of them, yes, they reuse the original report as a base, and some of them, might probably be using Report Extensions. What about that small percentage that are developing the Purchase Order report from scratch, or even migrating those from a previous Business Central version…? Therefore, there’s a chance that the developer customizing the Purchase Order document will forget to put this block in place, and the whole feature goes down the drain.</p>
+<p>Therefore, I chose to actually subscribe to 3 specific events published by the Purchase Order page:</p>
+<ul>
+<li><strong>Table Purchase Header\OnBeforePrintRecords</strong><ul>
+<li>This one is triggered right before BC tries to print the PO report</li>
+</ul>
+</li>
+<li><strong>Table Purchase Header\OnBeforeSendRecords</strong><ul>
+<li>This one is triggered right before BC tries to send the PO report by e-mail</li>
+</ul>
+</li>
+<li><strong>Codeunit Document-Print\OnDoPrintPurchaseHeaderToDocumentAttachmentOnBeforeRunSaveAsDocumentAttachment</strong><ul>
+<li>This one is triggered while BC is trying to attach the PO to the PO itself</li>
+</ul>
+</li>
+</ul>
+<p>With this, no matter if you use the standard out-of-box report, or if you use a custom report on the Report Selections, our block will most likely work as expected, when you trigger does actions from the PO Card or the PO List.</p>
+<h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><p>To enable this BC Idea, visit the <a target="_blank" rel="noopener" href="https://businesscentral.dynamics.com/?page=61500"><em>BC Idea Feature Management</em></a> page and search for the original title on the list. </p>
+<p>Once you enable it, you will find a new setting under Purchase &amp; Payables Setup (under FastTab <em>BC Ideas Features</em>):</p>
+<ul>
+<li><strong>Disable Printing Unreleased POs</strong><ul>
+<li>This setting will be enabled by default when you activate the feature, and it will prevent users from printing&#x2F;emailing&#x2F;attaching the PO document, if its status is not released.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/PAF/2024-08-02-Disable-printing-for-Purchase-Order-under-Pending-Approval-Status-PPSetupPage.png"><br><strong><em>Purchase &amp; Payables Setup</em></strong></p>
+<p>To disable this, you can either disable the setting on the P&amp;P Setup, or you can disable the BC Idea feature altogether.</p>
+<p>If you need to set permissions on who can enable or disable this feature, you need to restrict this permission on the Purchase &amp; Payables setup.</p>
+<h3 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h3><p>If you do enable this BC Idea, please use it at your own risk. Truthfully there’s not a lot of risk here but you have to be mindful of any potential conflicts with other existing extensions in your environment. Also, don’t forget to always try these features in a Sandbox environment first, and have users test it before really deploying to Production.</p>
+<h3 id="That’s-it-🎉"><a href="#That’s-it-🎉" class="headerlink" title="That’s it! 🎉"></a>That’s it! 🎉</h3><p>If you liked this idea, this development, or if you have questions or comments about this, don’t hesitate to react and&#x2F;or post on the discussion below (you will need a GitHub account).</p>
+
+      
+    </div>
+      
+      <footer>
+        
+  
+  <div class="categories">
+    <span class="material-icons md-14">bookmark</span>&nbsp;<a href="/categories/Implemented-Ideas/">Implemented Ideas</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <span class="material-icons md-14">label</span>&nbsp;<a href="/tags/Purchase-Order/">Purchase Order</a>, <a href="/tags/BCIdea/">BCIdea</a>, <a href="/tags/Reports/">Reports</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+  
+    <section id="comment">
+      <div>
+        <script src="https://giscus.app/client.js"
+                        data-repo="markborges/markborges.github.io"
+                        data-repo-id="R_kgDOG-6fcQ"
+                        data-mapping="number"
+                        data-term="5"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="bottom"
+                        data-theme="light"
+                        data-lang="en"
+                        data-loading="lazy"
+                        crossorigin="anonymous"
+                        async>
+                        </script>
+  </div>
+</section>
+  
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:bcrepositories.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2024/08/02/Disable-printing-for-Purchase-Order-under-Pending-Approval-Status/">Disable printing for Purchase Order under Pending Approval Status</a>
+      </li>
+    
+      <li>
+        <a href="/2024/08/02/Welcome-to-BC-Repositories-for-BC-Ideas/">Welcome to BC Repositories for BC Ideas</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Author-Notes/">Author Notes</a><small>1</small></li>
+  
+    <li><a href="/categories/Implemented-Ideas/">Implemented Ideas</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/BCIdea/" style="font-size: 10px;">BCIdea</a> <a href="/tags/Intro/" style="font-size: 10px;">Intro</a> <a href="/tags/Purchase-Order/" style="font-size: 10px;">Purchase Order</a> <a href="/tags/Reports/" style="font-size: 10px;">Reports</a> <a href="/tags/Welcome/" style="font-size: 10px;">Welcome</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2024 <a href="/About">Marcelo Borges</a>
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</body>
+</html>
+

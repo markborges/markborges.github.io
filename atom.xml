@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>BC Repositories and BC Ideas Extensions</title>
+  
+  <subtitle>Your BC Ideas inside a custom extension.</subtitle>
+  <link href="http://bcrepositories.com/atom.xml" rel="self"/>
+  
+  <link href="http://bcrepositories.com/"/>
+  <updated>2024-08-05T15:10:52.721Z</updated>
+  <id>http://bcrepositories.com/</id>
+  
+  <author>
+    <name>Marcelo Borges</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Disable printing for Purchase Order under Pending Approval Status</title>
+    <link href="http://bcrepositories.com/2024/08/02/Disable-printing-for-Purchase-Order-under-Pending-Approval-Status/"/>
+    <id>http://bcrepositories.com/2024/08/02/Disable-printing-for-Purchase-Order-under-Pending-Approval-Status/</id>
+    <published>2024-08-02T20:37:41.000Z</published>
+    <updated>2024-08-05T15:10:52.721Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="About-This-Idea"><a href="#About-This-Idea" class="headerlink" title="About This Idea"></a>About This Idea</h3><p>This original <a href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">idea</a> posted by user <em>YOKE MAY TANG</em> on 7&#x2F;31&#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.</p><span id="more"></span><p>In the original post, the user requests:</p><blockquote><p>Would like to prevent PO to be printed&#x2F;emailed to vendor while the PO is under Pending Approval.</p><footer><strong>@BCIdeas</strong><cite><a href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">Disable printing for Purchase Order under Pending Approval Status</a></cite></footer></blockquote><p>It’s a simple statement, and it seems to be pretty straight forward, right? But it does have a few caveats to be considered.</p><p>When users told me in the past they would not like BC to behave in a certain way until an approval process has cleared, it was mostly because they didn’t want users taking a shortcut in the process.</p><p>In this request, if we take it literally, it would be very easy to create a block (maybe an Error message?) to prevent the user from printing the Purchase Order document if Status equals “Pending Approval”. But if you really analyze this further, only blocking this for “Pending Approval” status wouldn’t make much sense…</p><p>What if the user simply printed the Purchase Document BEFORE requesting an approval? Then this block would be pretty useless, right? ⌛</p><br><h3 id="Implementation-Details"><a href="#Implementation-Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h3><p>Having this in mind, what makes more sense, is to actually prevent the printout if the status is <em>not released</em>. This means that even POs with status “Pending Prepayment” will be blocked from printing the Purchase Order document.</p><p>Having established that premise, we now need to then determine, in the code, where will we put this block?</p><p>In some of the comments, one user mentioned that it would be pretty easy to implement this block directly on the report, but I see one problem with that approach: a large majority of the customers customize the Purchase Order report. Most of them, yes, they reuse the original report as a base, and some of them, might probably be using Report Extensions. What about that small percentage that are developing the Purchase Order report from scratch, or even migrating those from a previous Business Central version…? Therefore, there’s a chance that the developer customizing the Purchase Order document will forget to put this block in place, and the whole feature goes down the drain.</p><p>Therefore, I chose to actually subscribe to 3 specific events published by the Purchase Order page:</p><ul><li><strong>Table Purchase Header\OnBeforePrintRecords</strong><ul><li>This one is triggered right before BC tries to print the PO report</li></ul></li><li><strong>Table Purchase Header\OnBeforeSendRecords</strong><ul><li>This one is triggered right before BC tries to send the PO report by e-mail</li></ul></li><li><strong>Codeunit Document-Print\OnDoPrintPurchaseHeaderToDocumentAttachmentOnBeforeRunSaveAsDocumentAttachment</strong><ul><li>This one is triggered while BC is trying to attach the PO to the PO itself</li></ul></li></ul><p>With this, no matter if you use the standard out-of-box report, or if you use a custom report on the Report Selections, our block will most likely work as expected, when you trigger does actions from the PO Card or the PO List.</p><h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><p>To enable this BC Idea, visit the <a href="https://businesscentral.dynamics.com/?page=61500"><em>BC Idea Feature Management</em></a> page and search for the original title on the list. </p><p>Once you enable it, you will find a new setting under Purchase &amp; Payables Setup (under FastTab <em>BC Ideas Features</em>):</p><ul><li><strong>Disable Printing Unreleased POs</strong><ul><li>This setting will be enabled by default when you activate the feature, and it will prevent users from printing&#x2F;emailing&#x2F;attaching the PO document, if its status is not released.</li></ul></li></ul><p><img src="/PAF/2024-08-02-Disable-printing-for-Purchase-Order-under-Pending-Approval-Status-PPSetupPage.png"><br><strong><em>Purchase &amp; Payables Setup</em></strong></p><p>To disable this, you can either disable the setting on the P&amp;P Setup, or you can disable the BC Idea feature altogether.</p><p>If you need to set permissions on who can enable or disable this feature, you need to restrict this permission on the Purchase &amp; Payables setup.</p><h3 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h3><p>If you do enable this BC Idea, please use it at your own risk. Truthfully there’s not a lot of risk here but you have to be mindful of any potential conflicts with other existing extensions in your environment. Also, don’t forget to always try these features in a Sandbox environment first, and have users test it before really deploying to Production.</p><h3 id="That’s-it-🎉"><a href="#That’s-it-🎉" class="headerlink" title="That’s it! 🎉"></a>That’s it! 🎉</h3><p>If you liked this idea, this development, or if you have questions or comments about this, don’t hesitate to react and&#x2F;or post on the discussion below (you will need a GitHub account).</p>]]></content>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;About-This-Idea&quot;&gt;&lt;a href=&quot;#About-This-Idea&quot; class=&quot;headerlink&quot; title=&quot;About This Idea&quot;&gt;&lt;/a&gt;About This Idea&lt;/h3&gt;&lt;p&gt;This original &lt;a href=&quot;https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2&quot;&gt;idea&lt;/a&gt; posted by user &lt;em&gt;YOKE MAY TANG&lt;/em&gt; on 7&amp;#x2F;31&amp;#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Implemented Ideas" scheme="http://bcrepositories.com/categories/Implemented-Ideas/"/>
+    
+    
+    <category term="Purchase Order" scheme="http://bcrepositories.com/tags/Purchase-Order/"/>
+    
+    <category term="BCIdea" scheme="http://bcrepositories.com/tags/BCIdea/"/>
+    
+    <category term="Reports" scheme="http://bcrepositories.com/tags/Reports/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Welcome to BC Repositories for BC Ideas</title>
+    <link href="http://bcrepositories.com/2024/08/02/Welcome-to-BC-Repositories-for-BC-Ideas/"/>
+    <id>http://bcrepositories.com/2024/08/02/Welcome-to-BC-Repositories-for-BC-Ideas/</id>
+    <published>2024-08-02T20:02:23.000Z</published>
+    <updated>2024-08-05T15:11:28.727Z</updated>
+    
+    <content type="html"><![CDATA[<p>I decided to take some of the ideas in the BC Ideas website, and turn them into reality.</p><span id="more"></span><p>In this blog, I’ll be capturing some of the ideas publicly posted on the Business Central Ideas website, and turning them into real extensions for Business Central. For each idea that I develop, I plan on writing a post where I’ll go over the challenges and decision-making thoughts for choosing certain designs, as well as sharing a little bit of the development process.</p><p>You can read a bit more about who I am on the <a href="/About">About</a> page.</p><p>If you would like to download the current version of the “BC Repositories - BC Ideas App”, please check the <a href="/Download">Download</a> link, but don’t forget to visit the <a href="/Disclaimer">Disclaimer</a> section for more details.</p><p>If you’d like to contact me, please review the links on the <a href="/About#About-the-Author">About</a> page.</p><h3 id="Microsoft’s-Pilot-GitHub-Contribution-to-BC’s-BaseApp"><a href="#Microsoft’s-Pilot-GitHub-Contribution-to-BC’s-BaseApp" class="headerlink" title="Microsoft’s Pilot GitHub Contribution to BC’s BaseApp"></a>Microsoft’s Pilot GitHub Contribution to BC’s BaseApp</h3><p>Please note that Microsoft currently has their own Pilot program where developers can freely contribute to BC’s BaseApp, through GitHub interactions.</p><p>This blog is not connected with that initiative. Instead, it will serve as an additional resource for users to see their BC Ideas implemented, until Microsoft pick them up to be part of the official product release.</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;I decided to take some of the ideas in the BC Ideas website, and turn them into reality.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Author Notes" scheme="http://bcrepositories.com/categories/Author-Notes/"/>
+    
+    
+    <category term="Welcome" scheme="http://bcrepositories.com/tags/Welcome/"/>
+    
+    <category term="Intro" scheme="http://bcrepositories.com/tags/Intro/"/>
+    
+  </entry>
+  
+</feed>
