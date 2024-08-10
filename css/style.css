@@ -143,6 +143,24 @@ a:hover {
 .material-icons.md-light.md-inactive {
   color: rgba(255,255,255,0.3);
 }
+strong.object-name {
+  padding: 2px 4px;
+  background-color: #eee;
+  font-family: monospace;
+  color: #ff4500;
+}
+strong.event-name {
+  padding: 2px 4px;
+  background-color: #eee;
+  font-family: monospace;
+  color: #4682b4;
+}
+strong.action-name {
+  border: solid 1px #000;
+  padding: 2px 4px;
+  background-color: #eee;
+  font-family: monospace;
+}
 #header {
   height: 55px;
   background: #00838f;

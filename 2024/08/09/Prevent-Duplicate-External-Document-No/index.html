@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>BC Idea | Prevent Duplicate External Document No. › BC Repositories and BC Ideas Extensions</title>
+  <meta name="author" content="Marcelo Borges">
+  
+  <meta name="description" content="This was the second BC Idea I chose to implement, because I have also seen quite a few customers questioning this, especially former NAV customers that at some point had such a feature.
+At the time of choosing this BC Idea, user Melissa Reichenbacher had collected 105 votes since its original posting back in 5&amp;#x2F;22&amp;#x2F;2020.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="BC Idea | Prevent Duplicate External Document No."/>
+  <meta property="og:site_name" content="BC Repositories and BC Ideas Extensions"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="BC Repositories and BC Ideas Extensions" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/"><div id="logo"></div></a>
+    <a href="/">BC Repositories and BC Ideas Extensions</a></h1>
+  <h2><a href="/">Your BC Ideas inside a custom extension.</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/2024/08/02/Welcome-to-BC-Repositories-for-BC-Ideas/">Welcome</a></li>
+      
+      <li><a href="/Disclaimer">Disclaimer</a></li>
+      
+      <li><a href="/Download">Download</a></li>
+      
+      <li><a href="/About">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">Atom Feed</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">BC Idea | Prevent Duplicate External Document No.</h1>
+  
+
+      
+        <time datetime="2024-08-09T06:57:26.000Z">Aug, 09 2024, by <a href="/About">Marcelo Borges</a>
+          
+             | <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=ed7b8328-549c-ea11-8b71-0003ff68c1c1">Follow the original BC Idea here</a>
+          
+        </time>
+      
+
+    </header>
+    <div class="entry">
+      
+        <p>This was the second BC Idea I chose to implement, because I have also seen quite a few customers questioning this, especially former NAV customers that at some point had such a feature.</p>
+<p>At the time of choosing this <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=ed7b8328-549c-ea11-8b71-0003ff68c1c1">BC Idea</a>, user <em>Melissa Reichenbacher</em> had collected 105 votes since its original posting back in 5&#x2F;22&#x2F;2020. <span id="more"></span> Let’s take a look at the request:</p>
+<blockquote><p>Add a notification to alert users during order entry if the External Document No. entered on a new Sales Order already exists in an open Sales Order or posted Sales Invoice.</p>
+<p>This is important to ensure a single customer order is not accidentally entered more than once. An additional enhancement would be the ability to set a default for the whole system with the ability to disable on a customer card.</p>
+<footer><strong>@BCIdeas</strong><cite><a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=ed7b8328-549c-ea11-8b71-0003ff68c1c1">Notification for duplicate External Documents in Sales</a></cite></footer></blockquote>
+
+<p>If you also navigate through the comments, you will see how many people actually found this useful and added their own details to how they would like to see this working.</p>
+<h3 id="Challenges-of-the-original-Navision-approach"><a href="#Challenges-of-the-original-Navision-approach" class="headerlink" title="Challenges of the original Navision approach"></a>Challenges of the original Navision approach</h3><p>When looking at this request, and remembering how Navision used to implement this, we definitely need to make improvements to this functionality. In the former days of Navision, if an External Document No. already existed for a customer, you simply could not reuse that External Document No. However, there were certain situations where users really needed to reuse that document No., and most of the times it was because they were just issuing the same invoice again (probably due to some error on the first invoice).</p>
+<p>What happened then, is that users started to slightly manipulate the External Document No. in order to be able to “reuse” the original number: They added blank spaces to the beginning of the number, or they added dots or other symbols to the end of the number. With this, Navision would not recognized those manipulated numbers as existing, and users would be able to post the “same” External Document Number.</p>
+<p>At the same time that users could reutilize numbers in a creative way, it created other challenges, such as trying to report off of that field.</p>
+<p>I personally wouldn’t want to implement this the same way, so that we can have some quality over the External Document No…<br>⏳</p>
+<h3 id="Implementation-Details-and-Settings"><a href="#Implementation-Details-and-Settings" class="headerlink" title="Implementation Details and Settings"></a>Implementation Details and Settings</h3><p>The way I developed this feature, I created a global setting in the Sales &amp; Receivables Setup with 3 values:<br><img src="/PAF/Prevent-Duplicate-Ext-Doc-No/Prevent-Duplicate-External-Document-No-Settings.png"></p>
+<ul>
+<li><strong>No</strong>: Using the same External Document No. will not be an issue.</li>
+<li><strong>Warning</strong>: If the user enters a duplicate <strong>Ext. Document No.</strong> (based on existing Sales Orders or Posted Sales Invoices), BC will throw a warning message, but it will let the user proceed.</li>
+<li><strong>Error</strong>: If the user enters a repeated <strong>Ext. Document No.</strong> (based on existing Sales Orders or Posted Sales Invoices), BC will throw an error message and the user will not be able to proceed.</li>
+</ul>
+<p>The original poster also commented that it would be great if this setting could be done per customer as well, so I went ahead and added the same field on the Customer Card.</p>
+<p><img src="/PAF/Prevent-Duplicate-Ext-Doc-No/Prevent-Duplicate-External-Document-No-Settings-Customer-Card.png"></p>
+<p>Here, you have 4 options: To use the default value from the Sales &amp; Receivables Setup (and you shall see between parenthesis what is the current default value), and the other 3 possible options (No, Warning and Error).</p>
+<h3 id="Setting-Warning"><a href="#Setting-Warning" class="headerlink" title="Setting: Warning"></a>Setting: Warning</h3><p>When you set BC to give you a warning, if you enter a duplicate Ext. Document Number, you shall see a message like the one below. You will be able to press Ok, and continue to use the same document number:<br><img src="/PAF/Prevent-Duplicate-Ext-Doc-No/PreventDuplicate-Warning.png"></p>
+<h3 id="Setting-Error"><a href="#Setting-Error" class="headerlink" title="Setting: Error"></a>Setting: Error</h3><p>When you set BC to throw an Error, then you shall see a message like the one below, and you won’t be able to proceed until you enter a new Ext. Document No.:<br><img src="/PAF/Prevent-Duplicate-Ext-Doc-No/PreventDuplicate-Error.png"></p>
+<h3 id="Warning-Microsoft-Implementation-⚠️"><a href="#Warning-Microsoft-Implementation-⚠️" class="headerlink" title="Warning: Microsoft Implementation ⚠️"></a>Warning: Microsoft Implementation ⚠️</h3><p>Since this idea has been posted, Microsoft has picked it up to be developed through their pilot open source contribution program, and they are coming up with their own implementation of this. As of now, their implementaiton will follow the Notification System pattern, where a blue notification is thrown at the top of the Sales Order document, which will probably suffice for most users. Since I’ve already developed this, I’m going to leave this implementation available, but you don’t have to enable it if you prefer to use Microsoft’s implementation.</p>
+<h3 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h3><p>If you do enable this BC Idea, please use it at your own risk. Truthfully there’s not a lot of risk here but you have to be mindful of any potential conflicts with other existing extensions in your environment. Also, don’t forget to always try these features in a Sandbox environment first, and have users test it before really deploying to Production.</p>
+<h3 id="That’s-it-🎉"><a href="#That’s-it-🎉" class="headerlink" title="That’s it! 🎉"></a>That’s it! 🎉</h3><p>If you liked this idea, this development, or if you have questions or comments about this, don’t hesitate to react and&#x2F;or post on the discussion below (you will need a GitHub account).</p>
+
+      
+    </div>
+      
+      <footer>
+        
+  
+  <div class="categories">
+    <span class="material-icons md-14">bookmark</span>&nbsp;<a href="/categories/Implemented-Ideas/">Implemented Ideas</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <span class="material-icons md-14">label</span>&nbsp;<a href="/tags/BC-Idea/">BC Idea</a>, <a href="/tags/Sales-Order/">Sales Order</a>, <a href="/tags/Document-Numbers/">Document Numbers</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+  
+    <section id="comment">
+      <div>
+        <script src="https://giscus.app/client.js"
+                        data-repo="markborges/markborges.github.io"
+                        data-repo-id="R_kgDOG-6fcQ"
+                        data-mapping="number"
+                        data-term="6"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="bottom"
+                        data-theme="light"
+                        data-lang="en"
+                        data-loading="lazy"
+                        crossorigin="anonymous"
+                        async>
+                        </script>
+  </div>
+</section>
+  
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:bcrepositories.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2024/08/09/Prevent-Duplicate-External-Document-No/">BC Idea | Prevent Duplicate External Document No.</a>
+      </li>
+    
+      <li>
+        <a href="/2024/08/09/Check-GL-Inconsistencies/">Utility | Check GL Inconsistencies</a>
+      </li>
+    
+      <li>
+        <a href="/2024/08/02/Disable-printing-for-Purchase-Order-under-Pending-Approval-Status/">BC Idea | Disable printing for Purchase Order under Pending Approval Status</a>
+      </li>
+    
+      <li>
+        <a href="/2024/08/02/Welcome-to-BC-Repositories-for-BC-Ideas/">Welcome to BC Repositories for BC Ideas</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Author-Notes/">Author Notes</a><small>1</small></li>
+  
+    <li><a href="/categories/Implemented-Ideas/">Implemented Ideas</a><small>2</small></li>
+  
+    <li><a href="/categories/Utilities/">Utilities</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/BC-Idea/" style="font-size: 20px;">BC Idea</a> <a href="/tags/BC-Repo-Utility/" style="font-size: 10px;">BC Repo Utility</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Document-Numbers/" style="font-size: 10px;">Document Numbers</a> <a href="/tags/G-L-Entries/" style="font-size: 10px;">G/L Entries</a> <a href="/tags/Intro/" style="font-size: 10px;">Intro</a> <a href="/tags/Purchase-Order/" style="font-size: 10px;">Purchase Order</a> <a href="/tags/Reports/" style="font-size: 10px;">Reports</a> <a href="/tags/Sales-Order/" style="font-size: 10px;">Sales Order</a> <a href="/tags/Single-Instance-Codeunit/" style="font-size: 10px;">Single Instance Codeunit</a> <a href="/tags/Welcome/" style="font-size: 10px;">Welcome</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2024 <a href="/About">Marcelo Borges</a>
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</body>
+</html>
+

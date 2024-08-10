@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Disable printing for Purchase Order under Pending Approval Status › BC Repositories and BC Ideas Extensions</title>
+  <title>BC Idea | Disable printing for Purchase Order under Pending Approval Status › BC Repositories and BC Ideas Extensions</title>
   <meta name="author" content="Marcelo Borges">
   
-  <meta name="description" content="About This IdeaThis original idea posted by user YOKE MAY TANG on 7&amp;#x2F;31&amp;#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.">
+  <meta name="description" content="This original idea posted by user YOKE MAY TANG on 7&amp;#x2F;31&amp;#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Disable printing for Purchase Order under Pending Approval Status"/>
+  <meta property="og:title" content="BC Idea | Disable printing for Purchase Order under Pending Approval Status"/>
   <meta property="og:site_name" content="BC Repositories and BC Ideas Extensions"/>
 
   
@@ -62,7 +62,7 @@
     <header>
       
   
-    <h1 class="title">Disable printing for Purchase Order under Pending Approval Status</h1>
+    <h1 class="title">BC Idea | Disable printing for Purchase Order under Pending Approval Status</h1>
   
 
       
@@ -76,7 +76,7 @@
     </header>
     <div class="entry">
       
-        <h3 id="About-This-Idea"><a href="#About-This-Idea" class="headerlink" title="About This Idea"></a>About This Idea</h3><p>This original <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">idea</a> posted by user <em>YOKE MAY TANG</em> on 7&#x2F;31&#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.</p>
+        <p>This original <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">idea</a> posted by user <em>YOKE MAY TANG</em> on 7&#x2F;31&#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.</p>
 <span id="more"></span>
 
 <p>In the original post, the user requests:</p>
@@ -90,18 +90,18 @@
 <br>
 <h3 id="Implementation-Details"><a href="#Implementation-Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h3><p>Having this in mind, what makes more sense, is to actually prevent the printout if the status is <em>not released</em>. This means that even POs with status “Pending Prepayment” will be blocked from printing the Purchase Order document.</p>
 <p>Having established that premise, we now need to then determine, in the code, where will we put this block?</p>
-<p>In some of the comments, one user mentioned that it would be pretty easy to implement this block directly on the report, but I see one problem with that approach: a large majority of the customers customize the Purchase Order report. Most of them, yes, they reuse the original report as a base, and some of them, might probably be using Report Extensions. What about that small percentage that are developing the Purchase Order report from scratch, or even migrating those from a previous Business Central version…? Therefore, there’s a chance that the developer customizing the Purchase Order document will forget to put this block in place, and the whole feature goes down the drain.</p>
-<p>Therefore, I chose to actually subscribe to 3 specific events published by the Purchase Order page:</p>
+<p>In some of the comments, one user mentioned that it would be pretty easy to implement this block directly on the report, but I see one problem with that approach: a large majority of the customers customize the <strong class='object-name'>Purchase Order</strong> report. Most of them, yes, they reuse the original report as a base, and some of them, might probably be using Report Extensions. What about that small percentage that are developing the <strong class='object-name'>Purchase Order</strong> report from scratch, or even migrating those from a previous Business Central version…? Therefore, there’s a chance that the developer customizing the Purchase Order document will forget to put this block in place, and the whole feature goes down the drain.</p>
+<p>Therefore, I chose to actually subscribe to 3 specific events:</p>
 <ul>
-<li><strong>Table Purchase Header\OnBeforePrintRecords</strong><ul>
-<li>This one is triggered right before BC tries to print the PO report</li>
+<li><strong>Table <strong class='object-name'>Purchase Header</strong>:<strong class='event-name'>OnBeforePrintRecords</strong></strong><a target="_blank" rel="noopener" href="https://github.com/StefanMaron/MSDyn365BC.Code.History/blob/7edfe60e4c08f6b8cf7d672a78c1ecd8a54332b3/BaseApp/Source/Base%20Application/Purchases/Document/PurchaseHeader.Table.al#L7214"><span class='material-icons md-14'>open_in_new</span></a><ul>
+<li>This one is triggered right before BC tries to print the <strong class='object-name'>Purchase Order</strong> report</li>
 </ul>
 </li>
-<li><strong>Table Purchase Header\OnBeforeSendRecords</strong><ul>
-<li>This one is triggered right before BC tries to send the PO report by e-mail</li>
+<li><strong>Table <strong class='object-name'>Purchase Header</strong>:<strong class='event-name'>OnBeforeSendRecords</strong></strong><a target="_blank" rel="noopener" href="https://github.com/StefanMaron/MSDyn365BC.Code.History/blob/7edfe60e4c08f6b8cf7d672a78c1ecd8a54332b3/BaseApp/Source/Base%20Application/Purchases/Document/PurchaseHeader.Table.al#L7209C9-L7209C10"><span class='material-icons md-14'>open_in_new</span></a><ul>
+<li>This one is triggered right before BC tries to send the <strong class='object-name'>Purchase Order</strong> report by e-mail</li>
 </ul>
 </li>
-<li><strong>Codeunit Document-Print\OnDoPrintPurchaseHeaderToDocumentAttachmentOnBeforeRunSaveAsDocumentAttachment</strong><ul>
+<li><strong>Codeunit <strong class='object-name'>Document-Print</strong>:<strong class='event-name'>OnDoPrintPurchaseHeaderToDocumentAttachmentOnBeforeRunSaveAsDocumentAttachment</strong></strong><a target="_blank" rel="noopener" href="https://github.com/StefanMaron/MSDyn365BC.Code.History/blob/7edfe60e4c08f6b8cf7d672a78c1ecd8a54332b3/BaseApp/Source/Base%20Application/Foundation/Reporting/DocumentPrint.Codeunit.al#L1082"><span class='material-icons md-14'>open_in_new</span></a><ul>
 <li>This one is triggered while BC is trying to attach the PO to the PO itself</li>
 </ul>
 </li>
@@ -115,7 +115,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/PAF/2024-08-02-Disable-printing-for-Purchase-Order-under-Pending-Approval-Status-PPSetupPage.png"><br><strong><em>Purchase &amp; Payables Setup</em></strong></p>
+<p><img src="/PAF/Disable-Printing/Disable-Printing-PPSetup.png"><br><strong><em>Purchase &amp; Payables Setup</em></strong></p>
 <p>To disable this, you can either disable the setting on the P&amp;P Setup, or you can disable the BC Idea feature altogether.</p>
 <p>If you need to set permissions on who can enable or disable this feature, you need to restrict this permission on the Purchase &amp; Payables setup.</p>
 <h3 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h3><p>If you do enable this BC Idea, please use it at your own risk. Truthfully there’s not a lot of risk here but you have to be mindful of any potential conflicts with other existing extensions in your environment. Also, don’t forget to always try these features in a Sandbox environment first, and have users test it before really deploying to Production.</p>
@@ -134,7 +134,7 @@
         
   
   <div class="tags">
-    <span class="material-icons md-14">label</span>&nbsp;<a href="/tags/Purchase-Order/">Purchase Order</a>, <a href="/tags/BCIdea/">BCIdea</a>, <a href="/tags/Reports/">Reports</a>
+    <span class="material-icons md-14">label</span>&nbsp;<a href="/tags/BC-Idea/">BC Idea</a>, <a href="/tags/Purchase-Order/">Purchase Order</a>, <a href="/tags/Reports/">Reports</a>
   </div>
 
         
@@ -199,7 +199,15 @@
   <ul class="entry">
     
       <li>
-        <a href="/2024/08/02/Disable-printing-for-Purchase-Order-under-Pending-Approval-Status/">Disable printing for Purchase Order under Pending Approval Status</a>
+        <a href="/2024/08/09/Prevent-Duplicate-External-Document-No/">BC Idea | Prevent Duplicate External Document No.</a>
+      </li>
+    
+      <li>
+        <a href="/2024/08/09/Check-GL-Inconsistencies/">Utility | Check GL Inconsistencies</a>
+      </li>
+    
+      <li>
+        <a href="/2024/08/02/Disable-printing-for-Purchase-Order-under-Pending-Approval-Status/">BC Idea | Disable printing for Purchase Order under Pending Approval Status</a>
       </li>
     
       <li>
@@ -217,7 +225,9 @@
   
     <li><a href="/categories/Author-Notes/">Author Notes</a><small>1</small></li>
   
-    <li><a href="/categories/Implemented-Ideas/">Implemented Ideas</a><small>1</small></li>
+    <li><a href="/categories/Implemented-Ideas/">Implemented Ideas</a><small>2</small></li>
+  
+    <li><a href="/categories/Utilities/">Utilities</a><small>1</small></li>
   
   </ul>
 </div>
@@ -227,7 +237,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/BCIdea/" style="font-size: 10px;">BCIdea</a> <a href="/tags/Intro/" style="font-size: 10px;">Intro</a> <a href="/tags/Purchase-Order/" style="font-size: 10px;">Purchase Order</a> <a href="/tags/Reports/" style="font-size: 10px;">Reports</a> <a href="/tags/Welcome/" style="font-size: 10px;">Welcome</a>
+    <a href="/tags/BC-Idea/" style="font-size: 20px;">BC Idea</a> <a href="/tags/BC-Repo-Utility/" style="font-size: 10px;">BC Repo Utility</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Document-Numbers/" style="font-size: 10px;">Document Numbers</a> <a href="/tags/G-L-Entries/" style="font-size: 10px;">G/L Entries</a> <a href="/tags/Intro/" style="font-size: 10px;">Intro</a> <a href="/tags/Purchase-Order/" style="font-size: 10px;">Purchase Order</a> <a href="/tags/Reports/" style="font-size: 10px;">Reports</a> <a href="/tags/Sales-Order/" style="font-size: 10px;">Sales Order</a> <a href="/tags/Single-Instance-Codeunit/" style="font-size: 10px;">Single Instance Codeunit</a> <a href="/tags/Welcome/" style="font-size: 10px;">Welcome</a>
   </div>
 </div>
 
