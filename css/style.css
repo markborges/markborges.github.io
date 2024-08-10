@@ -37,6 +37,24 @@ div#logo {
   width: 32px;
   height: 32px;
 }
+@media screen and (max-width: 900px) {
+  div#logo {
+    -webkit-background-size: 24px;
+    -moz-background-size: 24px;
+    background-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}
+hr#title-breaker {
+  visibility: hidden;
+}
+@media screen and (max-width: 900px) {
+  hr#title-breaker {
+    visibility: visible;
+    margin: 3px 0px 0px 0px;
+  }
+}
 h1,
 h2,
 h3,
@@ -168,10 +186,22 @@ strong.action-name {
   -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.5);
   box-shadow: 0 1px 10px rgba(0,0,0,0.5);
 }
+@media screen and (max-width: 900px) {
+  #header {
+    height: 80px;
+  }
+}
 #header h1 {
   font-weight: normal;
   font-size: 2em;
   line-height: 55px;
+}
+@media screen and (max-width: 900px) {
+  #header h1 {
+    font-size: 1.2em;
+    line-height: 30px;
+    font-weight: bold;
+  }
 }
 #header h1 a {
   color: #f5f5f5;
@@ -190,6 +220,11 @@ strong.action-name {
   right: 0;
   top: 0;
 }
+@media screen and (max-width: 900px) {
+  #main-nav {
+    position: unset;
+  }
+}
 #main-nav ul {
   list-style: none;
 }
@@ -197,6 +232,12 @@ strong.action-name {
   float: left;
   margin-left: 15px;
   line-height: 55px;
+}
+@media screen and (max-width: 900px) {
+  #main-nav ul li {
+    line-height: 20px;
+    font-weight: bold;
+  }
 }
 #main-nav ul li a {
   color: #ddd;
