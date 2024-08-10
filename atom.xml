@@ -6,7 +6,7 @@
   <link href="http://bcrepositories.com/atom.xml" rel="self"/>
   
   <link href="http://bcrepositories.com/"/>
-  <updated>2024-08-10T05:31:41.717Z</updated>
+  <updated>2024-08-10T23:02:28.756Z</updated>
   <id>http://bcrepositories.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BC Idea | Item Variant Pictures</title>
+    <link href="http://bcrepositories.com/2024/08/10/Item-Variant-Pictures/"/>
+    <id>http://bcrepositories.com/2024/08/10/Item-Variant-Pictures/</id>
+    <published>2024-08-10T22:19:00.000Z</published>
+    <updated>2024-08-10T23:02:28.756Z</updated>
+    
+    <content type="html"><![CDATA[<p>Items can have pictures, so why can’t Item Variants have pictures? That’s something one would think when reading  <em>Gary Frostick</em>‘s <a href="https://experience.dynamics.com/ideas/idea/?ideaid=bcd2104e-3b11-ea11-b265-0003ff68a8ad">Idea</a>, that had gathered 67 votes since it was posted back in 11&#x2F;27&#x2F;2019.</p><span id="more"></span><p>Here’s Gary’s idea:</p><blockquote><p>Item variants are typically used when there are variations of a product available such as a colour or size. It would be very useful to be able to load a picture specifically for an item variant so when viewing the list the user can see the differences in variants.</p><footer><strong>@BCIdeas</strong><cite><a href="https://experience.dynamics.com/ideas/idea/?ideaid=bcd2104e-3b11-ea11-b265-0003ff68a8ad">Picture on Item Variant Record</a></cite></footer></blockquote><p>And this is true. Even though I don’t see a lot of customer using Item Variants for all the different reasons, I think this idea would be easy enough to implement to cover for those customers that indeed use Item Variants in their processes.</p><p>I don’t think there’s a lot of challenges here, so let’s just jump into the implementation of this idea. 🏃‍♀️‍➡️</p><h3 id="Implementation-Details"><a href="#Implementation-Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h3><p>The very first thing we need to do is to actually create a MediaSet field on the [t:Item Variant] table to hold the actual image. There’s no mistery here, it was done using a Table Extension.</p><p>The next question is: <em>Where, or How am I going to let the users see and assign pictures to the variants?</em> And this is where we have to stop to think a little more, because we want to provide something functional, but we don’t want to break Business Central patterns.</p><p>My mind immediately went to showing the picture on a FactBox on the [p:Item Variants] <strong>List</strong> page. But if you check the [p:Item List] or the [p: Customer List] pages, they do <strong>not</strong> provide a <strong>Picture</strong> Factbox… Why is that?</p><p>The answer is: <strong>Tiles</strong> <a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-lists-as-tiles">[icon:open_in_new]</a>! If you want to see the pictures assigned to Items, you should not be viewing lists as <strong>Lists</strong>, you should be viewing them as either <strong>Tiles</strong> or <strong>Tall Tiles</strong>:<br><img src="/PAF/Item-Variants/Item-Variants-Item-List-Tiles.png"><br><em>Item List displayed as Tiles</em></p><p>Therefore, on my [t:Item Variant] TableExtension, I needed to create a fieldgroup named <strong>Brick</strong>, to hold the fields that I would like displayed as Tiles (including the picture), as documented by Microsoft <a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-lists-as-tiles#customizing-the-tile-view-in-al">[icon:open_in_new]</a>.</p><p>Once that was done, look at what I got:<br><img src="/PAF/Item-Variants/Item-Variants-Tiles.png"><br><em>Some pretty neat and colorful Conference Bundle variants…</em></p><h3 id="What-Else…"><a href="#What-Else…" class="headerlink" title="What Else…"></a>What Else…</h3><p>Well, items can be copied using the [a:Copy Item] action from the ribbon… Therefore, we cannot forget to handle Item Variant Pictures during the copy process. So, I went ahead and created a new flag on the [a:Copy Item] routine:<br><img src="/PAF/Item-Variants/Item-Variants-Copy-Item.png"></p><p>This new toggle will only be <strong>VISIBLE</strong>, if the <strong>Picture on Item Variants</strong> idea is enabled on the <a href="https://businesscentral.dynamics.com/?page=61500"><em>BC Idea Feature Management</em></a> page.<br>Once visible, this flag will only be <strong>ENABLED</strong>, if the Item Variants toggle is also turned on. Otherwise, the toggle will be disabled.</p><h3 id="Warning-Microsoft-Implementation-⚠️"><a href="#Warning-Microsoft-Implementation-⚠️" class="headerlink" title="Warning: Microsoft Implementation ⚠️"></a>Warning: Microsoft Implementation ⚠️</h3><p>After I went ahead and did this whole development, I noticed on the BC Idea that Microsoft also opened this one up for Open Source contribution through their Base App Contribution program on GitHub.</p><p>With this, you should be seeing a replacement to this sometime soon in the future. When I detect that this has been implemented in the Base App, I’ll mark this idea as deprecated, since you should prefer to keep your Master Data on official Base App tables and fields whenever available.</p><p>I’ll possibly provide a tool to copy pictures from this idea extension to Microsoft’s official architecture too… Let’s see how that goes.</p><h3 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h3><p>As usual, if you do enable this BC Idea, please use it at your own risk. Truthfully there’s not a lot of risk here but you have to be mindful of any potential conflicts with other existing extensions in your environment. Also, don’t forget to always try these features in a Sandbox environment first, and have users test it before really deploying to Production.</p><h3 id="That’s-it-🎉"><a href="#That’s-it-🎉" class="headerlink" title="That’s it! 🎉"></a>That’s it! 🎉</h3><p>If you liked this idea, this development, or if you have questions or comments about this, don’t hesitate to react and&#x2F;or post on the discussion below (you will need a GitHub account).</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;Items can have pictures, so why can’t Item Variants have pictures? That’s something one would think when reading  &lt;em&gt;Gary Frostick&lt;/em&gt;‘s &lt;a href=&quot;https://experience.dynamics.com/ideas/idea/?ideaid=bcd2104e-3b11-ea11-b265-0003ff68a8ad&quot;&gt;Idea&lt;/a&gt;, that had gathered 67 votes since it was posted back in 11&amp;#x2F;27&amp;#x2F;2019.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Implemented Ideas" scheme="http://bcrepositories.com/categories/Implemented-Ideas/"/>
+    
+    
+    <category term="BC Idea" scheme="http://bcrepositories.com/tags/BC-Idea/"/>
+    
+    <category term="Items" scheme="http://bcrepositories.com/tags/Items/"/>
+    
+    <category term="Item Variants" scheme="http://bcrepositories.com/tags/Item-Variants/"/>
+    
+    <category term="Bricks and Tiles" scheme="http://bcrepositories.com/tags/Bricks-and-Tiles/"/>
+    
+    <category term="Media and MediaSets" scheme="http://bcrepositories.com/tags/Media-and-MediaSets/"/>
+    
+    <category term="Copy Item" scheme="http://bcrepositories.com/tags/Copy-Item/"/>
+    
+  </entry>
   
   <entry>
     <title>BC Idea | Prevent Duplicate External Document No.</title>

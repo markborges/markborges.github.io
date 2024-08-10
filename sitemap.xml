@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://bcrepositories.com/Download/index.html</loc>
+    
+    <lastmod>2024-08-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/2024/08/10/Item-Variant-Pictures/</loc>
+    
+    <lastmod>2024-08-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://bcrepositories.com/2024/08/02/Welcome-to-BC-Repositories-for-BC-Ideas/</loc>
     
     <lastmod>2024-08-10</lastmod>
@@ -12,15 +30,6 @@
   
   <url>
     <loc>http://bcrepositories.com/About/index.html</loc>
-    
-    <lastmod>2024-08-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/Download/index.html</loc>
     
     <lastmod>2024-08-10</lastmod>
     
@@ -101,41 +110,6 @@
 
   
   <url>
-    <loc>http://bcrepositories.com/tags/BC-Idea/</loc>
-    <lastmod>2024-08-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/tags/Purchase-Order/</loc>
-    <lastmod>2024-08-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/tags/Reports/</loc>
-    <lastmod>2024-08-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/tags/Welcome/</loc>
-    <lastmod>2024-08-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/tags/Intro/</loc>
-    <lastmod>2024-08-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://bcrepositories.com/tags/BC-Repo-Utility/</loc>
     <lastmod>2024-08-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -164,6 +138,27 @@
   </url>
   
   <url>
+    <loc>http://bcrepositories.com/tags/Welcome/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/Intro/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/BC-Idea/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://bcrepositories.com/tags/Sales-Order/</loc>
     <lastmod>2024-08-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -177,10 +172,59 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://bcrepositories.com/tags/Purchase-Order/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/Reports/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/Items/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/Item-Variants/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/Bricks-and-Tiles/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/Media-and-MediaSets/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/Copy-Item/</loc>
+    <lastmod>2024-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>http://bcrepositories.com/categories/Implemented-Ideas/</loc>
+    <loc>http://bcrepositories.com/categories/Utilities/</loc>
     <lastmod>2024-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -194,7 +238,7 @@
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/categories/Utilities/</loc>
+    <loc>http://bcrepositories.com/categories/Implemented-Ideas/</loc>
     <lastmod>2024-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
