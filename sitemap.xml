@@ -110,6 +110,20 @@
 
   
   <url>
+    <loc>http://bcrepositories.com/tags/Welcome/</loc>
+    <lastmod>2024-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/Intro/</loc>
+    <lastmod>2024-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://bcrepositories.com/tags/BC-Idea/</loc>
     <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -125,20 +139,6 @@
   
   <url>
     <loc>http://bcrepositories.com/tags/Reports/</loc>
-    <lastmod>2024-08-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/tags/Welcome/</loc>
-    <lastmod>2024-08-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/tags/Intro/</loc>
     <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -224,14 +224,14 @@
 
   
   <url>
-    <loc>http://bcrepositories.com/categories/Implemented-Ideas/</loc>
+    <loc>http://bcrepositories.com/categories/Author-Notes/</loc>
     <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/categories/Author-Notes/</loc>
+    <loc>http://bcrepositories.com/categories/Implemented-Ideas/</loc>
     <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
