@@ -15,15 +15,16 @@
 
   <meta charset="utf-8">
   
-  <title>BC Idea | Disable printing for Purchase Order under Pending Approval Status › BC Repositories and BC Ideas Extensions</title>
+  <title>BC Idea | Enable Unlimited Over-Receipt › BC Repositories and BC Ideas Extensions</title>
   <meta name="author" content="Marcelo Borges">
   
-  <meta name="description" content="This original idea posted by user YOKE MAY TANG on 7&amp;#x2F;31&amp;#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.">
+  <meta name="description" content="Today on Yammer, a user reported that the Over-Receipt functionality was rather useless in cases were quantities are very minimal but still prone to over-receipt. For example, if the quantity on the line is 1, but the vendor sends 3, you wouldn’t be able to cover this scenario with out-of-box Over-Receipt, since the maximum tolerance is 100%.
+That’s when user Kilian Seizinger mentioned that he had already created a BC Idea to support unlimited Over-Receipt.">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="BC Idea | Disable printing for Purchase Order under Pending Approval Status"/>
+  <meta property="og:title" content="BC Idea | Enable Unlimited Over-Receipt"/>
   <meta property="og:site_name" content="BC Repositories and BC Ideas Extensions"/>
 
   
@@ -73,13 +74,13 @@
     <header>
       
   
-    <h1 class="title">BC Idea | Disable printing for Purchase Order under Pending Approval Status</h1>
+    <h1 class="title">BC Idea | Enable Unlimited Over-Receipt</h1>
   
 
       
-        <time datetime="2024-08-02T20:37:41.000Z">Aug, 02 2024, by <a href="/About">Marcelo Borges</a>
+        <time datetime="2024-08-30T03:22:14.000Z">Aug, 29 2024, by <a href="/About">Marcelo Borges</a>
           
-             | <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">Follow the original BC Idea here</a>
+             | <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=84b30110-fda5-ed11-9ac4-0003ff457106">Follow the original BC Idea here</a>
           
         </time>
       
@@ -87,49 +88,47 @@
     </header>
     <div class="entry">
       
-        <p>This original <a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">idea</a> posted by user <em>YOKE MAY TANG</em> on 7&#x2F;31&#x2F;2019 collected a total 135 votes at the time of development and I chose this one to be my first development because of its simplicity considering the total vote count.</p>
+        <p>Today on Yammer, a user reported that the Over-Receipt functionality was rather useless in cases were quantities are very minimal but still prone to over-receipt. For example, if the quantity on the line is 1, but the vendor sends 3, you wouldn’t be able to cover this scenario with out-of-box Over-Receipt, since the maximum tolerance is 100%.</p>
+<p>That’s when user <em>Kilian Seizinger</em> mentioned that he had already created a BC Idea to support unlimited Over-Receipt.</p>
 <span id="more"></span>
+<p><a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=84b30110-fda5-ed11-9ac4-0003ff457106">This idea</a> was not voted a lot since its initial posting on 2&#x2F;6&#x2F;2023 (17 votes), but still, I thought it was a quite valid and straight-forward idea to develop.</p>
+<p>Let’s review the request:</p>
+<blockquote><p>Right now we are limited to 100% Over-Receipt.</p>
+<p>It would be very helpful, if we can specifiy a Over-Receipt Code for one vendor to accept unlimited Over Receipt.</p>
+<footer><strong>@BCIdeas</strong><cite><a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=84b30110-fda5-ed11-9ac4-0003ff457106">Enable unlimited Over-Receipt</a></cite></footer></blockquote>
 
-<p>In the original post, the user requests:</p>
-<blockquote><p>Would like to prevent PO to be printed&#x2F;emailed to vendor while the PO is under Pending Approval.</p>
-<footer><strong>@BCIdeas</strong><cite><a target="_blank" rel="noopener" href="https://experience.dynamics.com/ideas/idea/?ideaid=c8cad776-56b3-e911-b083-0003ff68a4d2">Disable printing for Purchase Order under Pending Approval Status</a></cite></footer></blockquote>
-
-<p>It’s a simple statement, and it seems to be pretty straight forward, right? But it does have a few caveats to be considered.</p>
-<p>When users told me in the past they would not like BC to behave in a certain way until an approval process has cleared, it was mostly because they didn’t want users taking a shortcut in the process.</p>
-<p>In this request, if we take it literally, it would be very easy to create a block (maybe an Error message?) to prevent the user from printing the Purchase Order document if Status equals “Pending Approval”. But if you really analyze this further, only blocking this for “Pending Approval” status wouldn’t make much sense…</p>
-<p>What if the user simply printed the Purchase Document BEFORE requesting an approval? Then this block would be pretty useless, right? ⌛</p>
-<br>
-<h3 id="Implementation-Details"><a href="#Implementation-Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h3><p>Having this in mind, what makes more sense, is to actually prevent the printout if the status is <em>not released</em>. This means that even POs with status “Pending Prepayment” will be blocked from printing the Purchase Order document.</p>
-<p>Having established that premise, we now need to then determine, in the code, where will we put this block?</p>
-<p>In some of the comments, one user mentioned that it would be pretty easy to implement this block directly on the report, but I see one problem with that approach: a large majority of the customers customize the <strong class='object-name'>Purchase Order</strong> report. Most of them, yes, they reuse the original report as a base, and some of them, might probably be using Report Extensions. What about that small percentage that are developing the <strong class='object-name'>Purchase Order</strong> report from scratch, or even migrating those from a previous Business Central version…? Therefore, there’s a chance that the developer customizing the Purchase Order document will forget to put this block in place, and the whole feature goes down the drain.</p>
-<p>Therefore, I chose to actually subscribe to 3 specific events:</p>
+<p>I started by briefly checking the source code to see what type of restriction was in place that would prevent values above 100%, and thankfully, the restriction was not set directly on the field level. Instead, it was well written up in codeunits that provided subscribers to change this behavior.</p>
+<h3 id="Implementation-Details"><a href="#Implementation-Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h3><p>The initial thought was to just allow users to enter a humongous value on the “Over-Receipt Tolerance %”, such as 9999… It’s a very practical approach, but also it feels a bit lazy, and it doesn’t follow patterns that you can find in other parts of the system…</p>
+<p>For example, if we take a look at the <strong class='object-name'>Approval User Setup</strong> page <a target="_blank" rel="noopener" href="https://businesscentral.dynamics.com/?page=663"><span class='material-icons md-14'>open_in_new</span></a>, we will see that users have the option of either entering a <strong>Sales Amount Approval Limit</strong> or setting <strong>Unlimited Sales Approval</strong>:</p>
+<p><img src="/PAF/Enable-Unlimited-Over-Receipt/User-Approval-Setup.png"><br><em>Options on the User Approval Setup page</em></p>
+<p>Therefore, I followed this pattern and created the “Unlimited Over-Receipt Tolerance” field on the <strong class='object-name'>Over-Receipt Code</strong> table (<strong class='object-name'>Over-Receipt Codes</strong> page <a target="_blank" rel="noopener" href="https://businesscentral.dynamics.com/?page=8510"><span class='material-icons md-14'>open_in_new</span></a>):</p>
+<p><img src="/PAF/Enable-Unlimited-Over-Receipt/Over-Receipt-Codes.png"><br><em>New Unlimited Over-Receipt Tolerance field</em></p>
+<p>For me to allow this flag to work accordingly, and to also allow values above 100% (but no necessarily unlimited), I subscribed to 2 events:</p>
 <ul>
-<li><strong>Table <strong class='object-name'>Purchase Header</strong>:<strong class='event-name'>OnBeforePrintRecords</strong></strong><a target="_blank" rel="noopener" href="https://github.com/StefanMaron/MSDyn365BC.Code.History/blob/7edfe60e4c08f6b8cf7d672a78c1ecd8a54332b3/BaseApp/Source/Base%20Application/Purchases/Document/PurchaseHeader.Table.al#L7214"><span class='material-icons md-14'>open_in_new</span></a><ul>
-<li>This one is triggered right before BC tries to print the <strong class='object-name'>Purchase Order</strong> report</li>
+<li><p><strong>Table <strong class='object-name'>Over-Receipt Code</strong>:<strong class='event-name'>OnBeforeCheckMinMaxValue</strong></strong><a target="_blank" rel="noopener" href="https://github.com/StefanMaron/MSDyn365BC.Code.History/blob/d95f870441365db61f6456ed36b2609c3f1c0fad/BaseApp/Source/Base%20Application/Purchases/Document/OverReceiptCode.Table.al#L66"><span class='material-icons md-14'>open_in_new</span></a></p>
+<ul>
+<li>This event is triggered at the OnValidate event for the Tolerance % field. This will allow me to enter values above 100%.</li>
 </ul>
 </li>
-<li><strong>Table <strong class='object-name'>Purchase Header</strong>:<strong class='event-name'>OnBeforeSendRecords</strong></strong><a target="_blank" rel="noopener" href="https://github.com/StefanMaron/MSDyn365BC.Code.History/blob/7edfe60e4c08f6b8cf7d672a78c1ecd8a54332b3/BaseApp/Source/Base%20Application/Purchases/Document/PurchaseHeader.Table.al#L7209C9-L7209C10"><span class='material-icons md-14'>open_in_new</span></a><ul>
-<li>This one is triggered right before BC tries to send the <strong class='object-name'>Purchase Order</strong> report by e-mail</li>
-</ul>
-</li>
-<li><strong>Codeunit <strong class='object-name'>Document-Print</strong>:<strong class='event-name'>OnDoPrintPurchaseHeaderToDocumentAttachmentOnBeforeRunSaveAsDocumentAttachment</strong></strong><a target="_blank" rel="noopener" href="https://github.com/StefanMaron/MSDyn365BC.Code.History/blob/7edfe60e4c08f6b8cf7d672a78c1ecd8a54332b3/BaseApp/Source/Base%20Application/Foundation/Reporting/DocumentPrint.Codeunit.al#L1082"><span class='material-icons md-14'>open_in_new</span></a><ul>
-<li>This one is triggered while BC is trying to attach the PO to the PO itself</li>
+<li><p><strong>Codeunit <strong class='object-name'>Over-Receipt Mgt.</strong>:<strong class='event-name'>OnVerifyOverReceiptQuantityOnAfterCalcShouldCallError</strong></strong><a target="_blank" rel="noopener" href="https://github.com/StefanMaron/MSDyn365BC.Code.History/blob/d95f870441365db61f6456ed36b2609c3f1c0fad/BaseApp/Source/Base%20Application/Purchases/Document/OverReceiptMgt.Codeunit.al#L137"><span class='material-icons md-14'>open_in_new</span></a></p>
+<ul>
+<li>This event is triggered when BC already detected that an Over-Receipt is happening. In this case, parameter <strong>ShouldCallError</strong> already contains a value determined by BC if it should error out or not, due to over-receipt exceeding the tolerance. (Thank you so very very much whoever came up with this event, as this is exactly where we would want to catch this verification).</li>
 </ul>
 </li>
 </ul>
-<p>With this, no matter if you use the standard out-of-box report, or if you use a custom report on the Report Selections, our block will most likely work as expected, when you trigger does actions from the PO Card or the PO List.</p>
+<p>With this, implementing this BC Idea was pretty easy breezy. 🍸</p>
 <h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><p>To enable this BC Idea, visit the <a target="_blank" rel="noopener" href="https://businesscentral.dynamics.com/?page=61500"><em>BC Idea Feature Management</em></a> page and search for the original title on the list. </p>
-<p>Once you enable it, you will find a new setting under Purchase &amp; Payables Setup (under FastTab <em>BC Ideas Features</em>):</p>
+<p>Once you enable it, you will find a new setting under <strong class='object-name'>Purchase &amp; Payables Setup</strong> <a target="_blank" rel="noopener" href="https://businesscentral.dynamics.com/?page=460"><span class='material-icons md-14'>open_in_new</span></a> (under FastTab <em>BC Ideas Features</em>):</p>
 <ul>
-<li><strong>Disable Printing Unreleased POs</strong><ul>
-<li>This setting will be enabled by default when you activate the feature, and it will prevent users from printing&#x2F;emailing&#x2F;attaching the PO document, if its status is not released.</li>
+<li><strong>Enable Unlimited Over-Receipt</strong><ul>
+<li>This setting will be enabled by default when you activate the feature, and it will allow users to setup a Tolerance % that goes beyond 100%, and they will also be allowed to set an Unlimited Tolerance flag.</li>
 </ul>
 </li>
 </ul>
-<p><img src="/PAF/Disable-Printing/Disable-Printing-PPSetup.png"><br><strong><em>Purchase &amp; Payables Setup</em></strong></p>
+<p><img src="/PAF/Enable-Unlimited-Over-Receipt/PP-Setup.png"><br><em>Purchase &amp; Payables Setup page</em></p>
 <p>To disable this, you can either disable the setting on the P&amp;P Setup, or you can disable the BC Idea feature altogether.</p>
 <p>If you need to set permissions on who can enable or disable this feature, you need to restrict this permission on the Purchase &amp; Payables setup.</p>
-<h3 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h3><p>If you do enable this BC Idea, please use it at your own risk. Truthfully there’s not a lot of risk here but you have to be mindful of any potential conflicts with other existing extensions in your environment. Also, don’t forget to always try these features in a Sandbox environment first, and have users test it before really deploying to Production.</p>
+<h3 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h3><p>If you do enable this BC Idea, please use it at your own risk. Truthfully there’s not a lot of risk here but you have to be mindful of any potential conflicts with other existing extensions in your environment. Also, don’t forget to always try these features in a <strong>Sandbox</strong> environment first, and have users test it before really deploying to Production.</p>
 <h3 id="That’s-it-🎉"><a href="#That’s-it-🎉" class="headerlink" title="That’s it! 🎉"></a>That’s it! 🎉</h3><p>If you liked this idea, this development, or if you have questions or comments about this, don’t hesitate to react and&#x2F;or post on the discussion below (you will need a GitHub account).</p>
 
       
@@ -145,7 +144,7 @@
         
   
   <div class="tags">
-    <span class="material-icons md-14">label</span>&nbsp;<a href="/tags/BC-Idea/">BC Idea</a>, <a href="/tags/Purchase-Order/">Purchase Order</a>, <a href="/tags/Reports/">Reports</a>
+    <span class="material-icons md-14">label</span>&nbsp;<a href="/tags/BC-Idea/">BC Idea</a>, <a href="/tags/Purchase-Order/">Purchase Order</a>
   </div>
 
         
@@ -180,7 +179,7 @@
                         data-repo="markborges/markborges.github.io"
                         data-repo-id="R_kgDOG-6fcQ"
                         data-mapping="number"
-                        data-term="5"
+                        data-term="10"
                         data-reactions-enabled="1"
                         data-emit-metadata="0"
                         data-input-position="bottom"

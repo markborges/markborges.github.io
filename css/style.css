@@ -19,6 +19,10 @@ body {
     font-size: 12px;
   }
 }
+img {
+  -webkit-box-shadow: 3px 3px 10px #000;
+  box-shadow: 3px 3px 10px #000;
+}
 div#logo {
   background-image: url("/images/favicon.png");
   background-color: #fff;
