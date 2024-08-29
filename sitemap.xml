@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://bcrepositories.com/Download/index.html</loc>
+    <loc>http://bcrepositories.com/2024/08/29/Enable-Unlimited-Over-Receipt/</loc>
     
     <lastmod>2024-08-29</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/2024/08/29/Enable-Unlimited-Over-Receipt/</loc>
+    <loc>http://bcrepositories.com/Download/index.html</loc>
     
     <lastmod>2024-08-29</lastmod>
     
@@ -38,15 +38,6 @@
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/2024/08/09/Check-GL-Inconsistencies/</loc>
-    
-    <lastmod>2024-08-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://bcrepositories.com/2024/08/02/Welcome-to-BC-Repositories-for-BC-Ideas/</loc>
     
     <lastmod>2024-08-18</lastmod>
@@ -56,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/2024/08/10/Item-Variant-Pictures/</loc>
+    <loc>http://bcrepositories.com/2024/08/09/Check-GL-Inconsistencies/</loc>
     
     <lastmod>2024-08-18</lastmod>
     
@@ -66,6 +57,15 @@
   
   <url>
     <loc>http://bcrepositories.com/2024/08/09/Prevent-Duplicate-External-Document-No/</loc>
+    
+    <lastmod>2024-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/2024/08/10/Item-Variant-Pictures/</loc>
     
     <lastmod>2024-08-18</lastmod>
     
@@ -92,6 +92,15 @@
   </url>
   
   <url>
+    <loc>http://bcrepositories.com/About/index.html</loc>
+    
+    <lastmod>2024-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://bcrepositories.com/About/mb_bio.html</loc>
     
     <lastmod>2024-08-18</lastmod>
@@ -102,15 +111,6 @@
   
   <url>
     <loc>http://bcrepositories.com/Disclaimer/index.html</loc>
-    
-    <lastmod>2024-08-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/About/index.html</loc>
     
     <lastmod>2024-08-18</lastmod>
     
@@ -149,6 +149,20 @@
   </url>
   
   <url>
+    <loc>http://bcrepositories.com/tags/Welcome/</loc>
+    <lastmod>2024-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://bcrepositories.com/tags/Intro/</loc>
+    <lastmod>2024-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://bcrepositories.com/tags/BC-Repo-Utility/</loc>
     <lastmod>2024-08-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -177,14 +191,14 @@
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/tags/Welcome/</loc>
+    <loc>http://bcrepositories.com/tags/Sales-Order/</loc>
     <lastmod>2024-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/tags/Intro/</loc>
+    <loc>http://bcrepositories.com/tags/Document-Numbers/</loc>
     <lastmod>2024-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -260,20 +274,6 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>http://bcrepositories.com/tags/Sales-Order/</loc>
-    <lastmod>2024-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://bcrepositories.com/tags/Document-Numbers/</loc>
-    <lastmod>2024-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
@@ -284,14 +284,14 @@
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/categories/Utilities/</loc>
+    <loc>http://bcrepositories.com/categories/Author-Notes/</loc>
     <lastmod>2024-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://bcrepositories.com/categories/Author-Notes/</loc>
+    <loc>http://bcrepositories.com/categories/Utilities/</loc>
     <lastmod>2024-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
